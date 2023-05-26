@@ -9,7 +9,7 @@
     "dev": "nodemon index.js"
   },
   "engines": {
-    "node": "18.12.1"
+    "node": "18"
   },
   "keywords": [],
   "author": "",
