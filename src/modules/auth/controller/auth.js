@@ -1,4 +1,4 @@
-import { customAlphabet, nanoid } from "nanoid";
+import { customAlphabet } from "nanoid";
 import userModel from "../../../../DB/model/User.model.js";
 import { asyncHandler } from "../../../utils/ErrorHandling.js";
 import {
@@ -59,7 +59,7 @@ export const confirmEmail = asyncHandler(async (req, res, next) => {
     { confirmEmail: true }
   );
   return User.modifiedCount
-    ? res.status(200).redirect(`${process.env.VITE_CLIENT_URL}/confirmation`)
+    ? res.status(200).redirect(`${process.env.CLIENT_URL}/confirmation`)
     : res.status(404).send("Account Not Registered");
 });
 
@@ -83,7 +83,7 @@ export const newConfirmEmail = asyncHandler(async (req, res, next) => {
   if (!(await sendEmail({ to: email, subject: "Confirm Email", html }))) {
     return next(new Error("Rejected Email", { cause: 400 }));
   }
-  return res.status(200).redirect(`${process.env.VITE_CLIENT_URL}/confirmation`);
+  return res.status(200).redirect(`${process.env.CLIENT_URL}/confirmation`);
 });
 
 export const login = asyncHandler(async (req, res, next) => {
