@@ -4,7 +4,9 @@ let io;
 
 export const initIo = (httpServer) => {
   io = new Server(httpServer, {
-    cors: "*",
+    cors: {
+      origin: "*",
+    },
   });
   return io;
 };
